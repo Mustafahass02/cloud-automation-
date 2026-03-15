@@ -4,9 +4,7 @@ A production-ready infrastructure-as-code project demonstrating a secure, scalab
 
 
 
-
-Internet Gateway ◄──► Public Subnet ◄──► NAT Gateway ◄──► Private Subnet
-Traffic flows from the public internet through Route 53 and an ACM-secured ALB into an Elastic Beanstalk-managed EC2 environment. The application communicates with DynamoDB as its backend database, with credentials stored securely in Secrets Manager. A NAT Gateway allows private instances to make outbound calls without direct internet exposure.
+![Elastic Beanstalk Screenshot](./Screenshot%202026-03-15%20at%2000.30.48.png)
 
 AWS Services Used
 ServicePurposeVPC (10.0.0.0/16)Isolated network containing all resourcesInternet GatewayEntry point for public internet trafficPublic Subnet (10.0.1.0/24)Hosts the ALB and NAT GatewayRoute TableDirects 0.0.0.0/0 traffic to the Internet GatewayNAT GatewayAllows private instances to reach the internet securelyElastic IPStatic IP allocated to the NAT GatewayElastic BeanstalkManages EC2 provisioning, scaling, and app deploymentEC2 (t3.micro)Runs the Java application via Amazon Corretto 17DynamoDBServerless NoSQL database (PAY_PER_REQUEST billing)Secrets ManagerStores sensitive credentials securelyACMProvisions SSL/TLS certificate via DNS validation
