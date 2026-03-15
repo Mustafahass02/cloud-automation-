@@ -26,6 +26,10 @@ Elastic Beanstalk Environment      [Private Subnet]
 Internet Gateway ◄──► Public Subnet ◄──► NAT Gateway ◄──► Private Subnet
 ```
 
+
+![Elastic Beanstalk Screenshot](./Screenshot%202026-03-15%20at%2000.30.48.png)
+
+
 Traffic flows from the public internet through Route 53 and an ACM-secured ALB into an Elastic Beanstalk-managed EC2 environment. The application communicates with DynamoDB as its backend database, with credentials stored securely in Secrets Manager. A NAT Gateway allows private instances to make outbound calls without direct internet exposure.
 
 ---
